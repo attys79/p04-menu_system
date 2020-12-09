@@ -19,7 +19,18 @@ basic.forever(function () {
         }
     }
     if (input.buttonIsPressed(Button.B)) {
-        basic.showNumber(item)
+        if (item == 0) {
+            basic.showIcon(IconNames.Heart)
+        } else if (item == 1) {
+            basic.showIcon(IconNames.SmallHeart)
+        } else if (item == 2) {
+            basic.showIcon(IconNames.Yes)
+        } else if (item == 3) {
+            basic.showIcon(IconNames.No)
+        } else {
+            basic.showIcon(IconNames.Happy)
+        }
+        basic.pause(1000)
         while (input.buttonIsPressed(Button.B)) {
             basic.pause(1)
         }
