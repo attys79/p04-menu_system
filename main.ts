@@ -1,3 +1,8 @@
+input.onButtonPressed(Button.AB, function () {
+    _break = true
+    led.stopAnimation()
+})
+let _break = false
 basic.showLeds(`
     # . # . .
     # . . . .
@@ -7,6 +12,7 @@ basic.showLeds(`
     `)
 let item = 0
 let counter = 0
+_break = false
 basic.forever(function () {
     led.unplot(2, item)
     if (input.buttonIsPressed(Button.A)) {
@@ -20,7 +26,14 @@ basic.forever(function () {
     }
     if (input.buttonIsPressed(Button.B)) {
         if (item == 0) {
-            basic.showIcon(IconNames.Heart)
+            while (true) {
+                if (_break) {
+                    _break = false
+                    break;
+                } else {
+                    basic.showString("Attila Forgacs")
+                }
+            }
         } else if (item == 1) {
             basic.showIcon(IconNames.SmallHeart)
         } else if (item == 2) {
